@@ -1,0 +1,30 @@
+@rendermode InteractiveServer
+
+<div class="col-sm-12 col-md-4 p-3 text-center">
+    <div class="game-name">
+        @Game!.Name
+    </div>
+    <hr class="hrfixed" />
+    <div class="card-image">
+        <a href="#">
+            <img src="@Game.Image" alt="@Game.Name" class="game-image" />
+        </a>
+    </div>
+    <hr class="hrfixed" />
+    <div class="game-card-footer">
+        <div class="btn-group my-3 text-center" role="group">
+            <a href="#" class="btn btn-outline-info">
+               <img src="/MainModule/icons/pen-to-square-solid.svg" style="width:20px;height:auto" />
+            </a>
+            <button type="button" class="btn btn-outline-danger">
+                <img src="/MainModule/icons/trash-can-solid.svg" style="width:20px;height:auto" />Delete
+            </button>
+        </div>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public GameModel? Game { get; set; }
+
+}

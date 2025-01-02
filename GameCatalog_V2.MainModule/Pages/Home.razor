@@ -1,0 +1,11 @@
+﻿@page "/"
+<link href="MainModule/css/MySuper.css" rel="stylesheet" />
+
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+<GameList ListOfItems="gameItemsList" />
+
+@code{
+    List<GameModel>? gameItemsList =new();
+}

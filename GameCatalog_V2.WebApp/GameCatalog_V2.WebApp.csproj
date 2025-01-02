@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Calabonga.Blazor.AppDefinitions" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Modules\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameCatalog_V2.Core\GameCatalog_V2.Core.csproj" />
+    <ProjectReference Include="..\GameCatalog_V2.MainModule\GameCatalog_V2.MainModule.csproj" />
+  </ItemGroup>
+
+</Project>

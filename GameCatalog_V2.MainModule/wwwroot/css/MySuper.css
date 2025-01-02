@@ -1,0 +1,25 @@
+﻿.game-name {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: blue;
+    background-color: lightseagreen;
+    border-radius: 5px 5px 0 0;
+}
+.hrfixed{
+    margin:5px 0 !important;
+}
+.card-image {
+    background-color:lightseagreen;
+    padding:5px 0;
+
+}
+.game-image{
+    max-width:200px;
+    max-height:250px;
+}
+.game-card-footer
+{
+background-color:lightseagreen;
+border-radius:0 0 5px 5px;
+}
