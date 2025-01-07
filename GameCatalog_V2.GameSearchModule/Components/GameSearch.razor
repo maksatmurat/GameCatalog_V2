@@ -1,0 +1,106 @@
+@page "/gamesearch"
+
+@rendermode InteractiveServer
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Search Game</h1>
+    </div>
+
+</div>
+<div class="row mb-2">
+    <div class="col-sm-12 col-md-6">
+        <input type="text" class="form-control" @onkeypress="((KeyboardEventArgs args) => GameNameKeyPressHandler(args) )" placeholder="Enter Game Name..." name="search" @bind-value="@gameName" @bind-value:event="oninput" />
+        <select class="form-control my-2" @bind="selectedGameGenre">
+            <option value="-1">-- Select Game Genre --</option>
+            @foreach (var item in Genres)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <div class="row mb-2">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-checkbox-imput" id="featureRelease" @bind="featureRelease" />
+                    <label class="custom-control-label" for="featureRelease">Feature Release?</label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-checkbox-imput" id="canBuyId" @bind="canBuy" />
+                    <label class="custom-control-label" for="canBuyId">Can Buy?</label>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-outline-primary mb-2 form-control" @onclick="SearchTheGame">Search Game</button>
+        <button type="button" class="btn btn-outline-danger mb-2 form-control" @onclick="ResetValues">Reset</button>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="border border-primary rounded p-4">
+            <p>Game Name: @gameName</p>
+            <p>Choosed Genre: @selectedGameGenre</p>
+            <p>Future Release: @featureRelease</p>
+            <p>Can Buy?: @canBuy</p>
+
+        </div>
+    </div>
+</div>
+<div class="border border-success rounded p-3 my-3">
+    <GameList ListOfItems="Games" />
+</div>
+
+
+
+@code{
+    string gameName = string.Empty;
+    string selectedGameGenre = "-1";
+    List<Genre> Genres = new();
+    List<GameModel> Games = new();
+    bool featureRelease = false;
+    bool canBuy = false;
+
+    protected override void OnInitialized()
+    {
+        Genres = _db.GetAllGenres();
+    }
+    void GameNameKeyPressHandler(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+        {
+
+        }
+    }
+    void SearchTheGame()
+    {
+        Games = _db.GetAllGames();
+        @if (!string.IsNullOrWhiteSpace(gameName))
+        {
+            Games = Games.Where(x => x.Name!.ToLower().Contains(gameName.ToLower())).ToList();
+        }
+        else if (selectedGameGenre != "-1")
+        {
+            Games = Games.Where(x => x.GenreId.ToString().Equals(selectedGameGenre)).ToList();
+        }
+        else if (featureRelease)
+        {
+            Games = Games.Where(x => x.ReleaseDate > DateTime.Now).ToList();
+        }
+        else if (canBuy)
+        {
+            Games = Games.Where(x => x.ReleaseDate <= DateTime.Now).ToList();
+        }
+        else
+        {
+            Games = new();
+        }
+    }
+    void ResetValues()
+    {
+        gameName = string.Empty;
+        selectedGameGenre = "-1";
+        featureRelease = false;
+        canBuy = false;
+        Games = new();
+    }
+}
