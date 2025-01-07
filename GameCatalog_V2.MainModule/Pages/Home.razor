@@ -1,6 +1,6 @@
 ﻿@page "/"
 <link href="MainModule/css/MySuper.css" rel="stylesheet" />
-
+@inject IRepository repository
 @rendermode InteractiveServer
 
 <PageTitle>Home</PageTitle>
@@ -8,4 +8,10 @@
 
 @code{
     List<GameModel>? gameItemsList =new();
+
+    protected override void OnInitialized()
+    {
+        gameItemsList = repository.GetAllGames();
+
+    }
 }
