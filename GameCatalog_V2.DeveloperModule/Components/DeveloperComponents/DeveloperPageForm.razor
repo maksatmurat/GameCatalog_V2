@@ -1,13 +1,19 @@
 @rendermode InteractiveServer
+
+<link href="Developer/css/DeveloperStyles.css" rel="stylesheet" />
+
 <EditForm Model="Developer" FormName="Developer" OnValidSubmit="OnValidSubmitHandler">
-    <DataAnnotationsValidator/>
+    <DataAnnotationsValidator />
     <div class="form-group">
         <label>Developer Name:</label>
         <InputText class="form-group" @bind-Value="Developer!.DeveloperName" />
-        <ValidationMessage For="()=>Developer!.DeveloperName"/>
+        <ValidationMessage For="()=>Developer!.DeveloperName" />
     </div>
 
-    <InputImage  Label="Image" OnImageFileSelected="OnImageFileSelectedHandler" ImageUrl="@imageUrl"/>
+    <InputImage Label="Image" OnImageFileSelected="OnImageFileSelectedHandler" ImageUrl="@imageUrl" />
+    <div class="form-group form-markdown">
+        <MarkdownInput @bind-Value="Developer.StudioDescription" Label="Description" OnFor="(()=>Developer.StudioDescription)" />
+    </div>
     <button type="submit" class="btn btn-primary">Create New Studio</button>
 </EditForm>
 @code{
@@ -26,3 +32,12 @@
     }
 
 }
+
+<style>
+    .form-markdown textarea {
+        width: 500px;
+        height: 500px;
+        padding: 10px;
+    }
+
+</style>

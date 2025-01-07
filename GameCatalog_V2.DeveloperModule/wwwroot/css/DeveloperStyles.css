@@ -1,0 +1,10 @@
+﻿.form-markdown textarea {
+    width: 500px;
+    height: 500px;
+    padding: 10px;
+}
+.form-markdown.container-markdown {
+    border: 1px dashed #000;
+    width: 500px;
+    height: 500px;
+}

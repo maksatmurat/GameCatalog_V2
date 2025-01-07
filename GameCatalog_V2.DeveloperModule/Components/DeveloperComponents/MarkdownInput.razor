@@ -1,0 +1,36 @@
+@inherits Microsoft.AspNetCore.Components.Forms.InputTextArea
+@using System.Linq.Expressions
+@using Microsoft.AspNetCore.Components.Forms
+
+<link href="Developer/css/DeveloperStyles.css" rel="stylesheet"/>
+@typeparam TValue
+
+<div class="row">
+    <div class="col">
+        <label>@Label</label>
+        <div>
+            @*<InputTextArea @bind-Value="CurrentValue" />*@
+            <textarea @bind-value="CurrentValue" @bind-value:event="oninput" />
+            <ValidationMessage For="OnFor" />
+        </div>
+    </div>
+    <div class="col">
+        <label>@Label (Preview)</label>
+        <div class="container-markdown">
+            <MarkdownRenderer MarkdownContent="@CurrentValue" />
+        </div>
+    </div>
+</div>
+
+@code{
+    [Parameter] public string? Label { get; set; }
+    [Parameter] public Expression<Func<TValue>>? OnFor { get; set; }
+    
+}
+<style>
+    .container-markdown {
+        border: 1px dashed #000;
+        width: 500px;
+        height: 500px;
+    }
+</style>

@@ -20,8 +20,6 @@
     <ProjectReference Include="..\GameCatalog_V2.GameSearchModule\GameCatalog_V2.GameSearchModule.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.GamesModule\GameCatalog_V2.GamesModule.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.GenresModule\GameCatalog_V2.GenresModule.csproj" />
-    <!--<ProjectReference Include="..\GameCatalog_V2.GamesModule\GameCatalog_V2.GamesModule.csproj" />
-    <ProjectReference Include="..\GameCatalog_V2.GenresModule\GameCatalog_V2.GenresModule.csproj" />-->
     <ProjectReference Include="..\GameCatalog_V2.MainModule\GameCatalog_V2.MainModule.csproj" />
   </ItemGroup>
 

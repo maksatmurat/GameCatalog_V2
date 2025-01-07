@@ -1,23 +1,24 @@
 @page "/studio/create"
 @rendermode InteractiveServer
+<link href="Developer/css/DeveloperStyles.css" rel="stylesheet" />
 
-<div class="row">
-    <div class="col">
-        <h1 class="text-info">Create Developer Studio</h1>
+    <div class="row">
+        <div class="col">
+            <h1 class="text-info">Create Developer Studio</h1>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-6">
-        <DeveloperPageForm Developer="Developer" OnValidSubmitHandler="Create" />
-    </div>
-    <div class="col-6">
+    <div class="row">
+        <div class="col-8">
+            <DeveloperPageForm Developer="Developer" OnValidSubmitHandler="Create" />
+        </div>
+        <div class="col">
 
+        </div>
     </div>
-</div>
-@code{
-    GameDeveloper Developer = new();
-    void Create()
-    {
+    @code{
+        GameDeveloper Developer = new();
+        void Create()
+        {
 
+        }
     }
-}
