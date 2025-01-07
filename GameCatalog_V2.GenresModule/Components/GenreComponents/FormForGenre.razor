@@ -1,0 +1,18 @@
+@rendermode InteractiveServer
+
+<EditForm FormName="genre" Model="Genre" OnValidSubmit="OnValidSumbit">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label>Genre Name: </label>
+        <div>
+            <InputText id="genreName" class="form-control" @bind-Value="Genre!.Name" />
+            <ValidationMessage For="()=>Genre!.Name" />
+        </div>
+    </div>
+    <button class="btn btn-outline-primary">Add Game</button>
+</EditForm>
+
+@code{
+    [Parameter] public Genre? Genre { get; set; }
+    [Parameter] public EventCallback OnValidSumbit { get; set; }
+}

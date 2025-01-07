@@ -1,1 +1,75 @@
-@page "/genres/edit"
+@page "/genres/edit/{GenreId:int}"
+@inject GameCatalog_V2.Core.Repository.IRepository _db
+@rendermode InteractiveServer
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Edit Genre</h1>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-6">
+        @if (genre is not null)
+        {
+            <FormForGenre Genre="genre" OnValidSumbit="Edit"></FormForGenre>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                Invalid Id,Please try again
+            </div>
+        }
+    </div>
+    <div class="col-6">
+        @if (message is not null)
+        {
+            <div class="@cssClass text-center py-2">@message</div>
+            foreach (var item in allGenres)
+            {
+                <div class="row justify-content-lg-between m-1 text-white">
+                    <div class="col-6 bg-primary">
+                        ID: @item.Id
+                    </div>
+                    <div class="col-6 bg-info">
+                        Name:@item.Name
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@code{
+    [Parameter] public int GenreId { get; set; }
+
+    Genre? genre;
+    string message = string.Empty;
+    string cssClass = string.Empty;
+    List<Genre> allGenres = new();
+    protected override void OnInitialized()
+    {
+        genre = _db.GetGenreById(GenreId);
+    }
+    void Edit()
+    {
+        var result = _db.EditGenre(genre!);
+
+        if (result)
+        {
+            cssClass = "alert alert-success";
+            message = "Editing Success!";
+            UpdateGenreList();
+        }
+        else
+        {
+            cssClass = "alert alert-danger";
+            message = "Editing failed!";
+        }
+    }
+    void UpdateGenreList()
+    {
+        allGenres = new();
+        allGenres = _db.GetAllGenres();
+    }
+}

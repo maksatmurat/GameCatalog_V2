@@ -1,6 +1,10 @@
 @page "/games"
 @inject NavigationManager navManager
 @rendermode InteractiveServer
+@inject IRepository repository
+
+<link href="MainModule/css/MySuper.css" rel="stylesheet" />
+
 
 <div class="row">
     <div class="col">
@@ -14,7 +18,18 @@
         <button @onclick="AddNewGame" class="btn btn-primary"> Add New Game</button>
     </div>
 </div>
+
+<PageTitle>Home</PageTitle>
+<GameList ListOfItems="gameItemsList" />
+
 @code{
+    List<GameModel>? gameItemsList = new();
+
+    protected override void OnInitialized()
+    {
+        gameItemsList = repository.GetAllGames();
+
+    }
     void AddNewGame()
     {
         navManager.NavigateTo("/gamesdetails");

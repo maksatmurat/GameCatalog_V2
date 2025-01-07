@@ -30,7 +30,7 @@
 
     protected override void OnInitialized()
     {
-        url = $"gamesdetails/{Game.Id}/{Game.Name?.Replace(" ","-")}";
+        url = $"gamesdetails/{Game!.Id}/{Game!.Name!.Replace(" ","-")}";
     }
 
 }
