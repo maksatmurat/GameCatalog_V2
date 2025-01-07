@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GameCatalog_V2.Core\GameCatalog_V2.Core.csproj" />
+    <ProjectReference Include="..\GameCatalog_V2.DeveloperModule\GameCatalog_V2.DeveloperModule.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.GameSearchModule\GameCatalog_V2.GameSearchModule.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.GamesModule\GameCatalog_V2.GamesModule.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.GenresModule\GameCatalog_V2.GenresModule.csproj" />

@@ -1,0 +1,58 @@
+﻿@inject IFileReaderService _fileReader
+
+
+
+<div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroupFile">@Label</span>
+        <input class="form-control" type="file" accept=".jpg,.jpeg,.png" @onchange="OnImageFileHandler" id="studioName" aria-describedby="inputGroupFile" @ref="inputElement">
+        <label class="input-group-text" for="studioName">@fileName</label>
+</div>
+
+
+
+<div>
+    @if (imageBase64 is not null)
+    {
+        <div>
+            <div class="my-3 mr-3">
+                <img src="data:image/jpeg;base64,@imageBase64" class="img-thumbnail" width="200" />
+            </div>
+        </div>
+    }
+    else if (ImageUrl is not null)
+    {
+        <div>
+            <div class="my-3 mr-3">
+                <img src="@ImageUrl" class="img-thumbnail" width="200" />
+            </div>
+        </div>
+    }
+</div>
+
+@code{
+    [Parameter] public string Label { get; set; } = "Image";
+    [Parameter] public string? ImageUrl { get; set; }
+    [Parameter] public EventCallback<string> OnImageFileSelected { get; set; }
+    ElementReference inputElement;
+    string? imageBase64;
+    string fileName = "Choose file...";
+    async Task OnImageFileHandler()
+    {
+        foreach (var item in await _fileReader.CreateReference(inputElement).EnumerateFilesAsync())
+        {
+            using (MemoryStream ms = await item.CreateMemoryStreamAsync(4 * 1024))
+            {
+                IFileInfo fileInfo = await item.ReadFileInfoAsync();
+                fileName = fileInfo.Name;
+                var byteImage = new byte[ms.Length];
+                ms.Read(byteImage, 0, (int)ms.Length);
+                imageBase64 = Convert.ToBase64String(byteImage);
+
+                await OnImageFileSelected.InvokeAsync(imageBase64);
+                ImageUrl = null;
+                StateHasChanged();
+            }
+        }
+    }
+
+}

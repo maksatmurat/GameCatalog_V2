@@ -1,0 +1,28 @@
+@rendermode InteractiveServer
+<EditForm Model="Developer" FormName="Developer" OnValidSubmit="OnValidSubmitHandler">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <label>Developer Name:</label>
+        <InputText class="form-group" @bind-Value="Developer!.DeveloperName" />
+        <ValidationMessage For="()=>Developer!.DeveloperName"/>
+    </div>
+
+    <InputImage  Label="Image" OnImageFileSelected="OnImageFileSelectedHandler" ImageUrl="@imageUrl"/>
+    <button type="submit" class="btn btn-primary">Create New Studio</button>
+</EditForm>
+@code{
+    [Parameter] public GameDeveloper? Developer { get; set; }
+    [Parameter] public EventCallback OnValidSubmitHandler { get; set; }
+    string? imageUrl;
+    protected override void OnInitialized()
+    {
+        imageUrl = Developer!.Image;
+        Developer.Image = null;
+    }
+    void OnImageFileSelectedHandler(string imageBase64)
+    {
+        Developer!.Image = imageBase64;
+        imageUrl = null;
+    }
+
+}
