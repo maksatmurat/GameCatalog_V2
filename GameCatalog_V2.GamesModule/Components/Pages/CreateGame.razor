@@ -1,21 +1,27 @@
 @page "/games/create"
 @inject NavigationManager navManager
+@inject IRepository _db
+@rendermode InteractiveServer
 
-    <div class="row">
-        <div class="col">
-            <h1 class="text-info text-center text-uppercase">
-                Create Game
-            </h1>
-        </div>
+<div class="row">
+    <div class="col">
+        <h1 class="text-info text-center text-uppercase">
+            Create Game
+        </h1>
     </div>
-    <div class="row">
-        <div class="col text-center">
-            <button class="btn btn-primary" @onclick="AddNewGame"> Add New Game</button>
-        </div>
+</div>
+<div class="row">
+    <div class="col">
+        <Gameform Game="game" OnValidSubmit="AddNewGame" />
     </div>
+</div>
 @code{
+    GameModel game = new();
     void AddNewGame()
     {
-        navManager.NavigateTo("gamesdetails");
+        bool result = _db.CreateNewGame(game);
+
+        if (result)
+            navManager.NavigateTo("/games");
     }
 }

@@ -1,1 +1,32 @@
-@page "/games/edit"
+@page "/games/edit/{gameId:int}"
+@inject NavigationManager navManager
+@inject IRepository _db
+@rendermode InteractiveServer
+
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info text-center text-uppercase">
+            Edit Game
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <Gameform Game="game" OnValidSubmit="EditTheGame" />
+    </div>
+</div>
+
+@code{
+    [Parameter] public int GameId { get; set; }
+    GameModel? game;
+
+    protected override void OnInitialized()
+    {
+        game = _db.GetGameById(GameId);
+    }
+    void EditTheGame()
+    {
+
+    }
+}

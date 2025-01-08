@@ -22,15 +22,15 @@
 <GameList ListOfItems="gameItemsList" />
 
 @code{
-    List<GameModel>? gameItemsList = new();
+    List<GameModel>? gameItemsList;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        gameItemsList = repository.GetAllGames();
+        gameItemsList =  repository.GetAllGames();
 
     }
     void AddNewGame()
     {
-        navManager.NavigateTo("/gamesdetails");
+        navManager.NavigateTo("/games/create");
     }
 }
