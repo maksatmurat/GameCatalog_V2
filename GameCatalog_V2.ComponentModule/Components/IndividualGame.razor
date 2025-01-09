@@ -1,4 +1,5 @@
 @rendermode InteractiveServer
+
 @using System.Text.RegularExpressions
 <div class="col-sm-12 col-md-6 col-lg-4 p-3 text-center">
     <div class="game-name">
@@ -7,22 +8,24 @@
     <hr class="hrfixed" />
     <div class="card-image">
         <a href="@url">
-            <img style="max-width: min(400px,100%); height: auto" src="@Game.Image" alt="@Game.Name" class="game-image" />
+            @if (IsBase64(Game.Image!))
+            {
+                <img style="max-width: min(400px,100%); height: auto" src="data:image/jpeg;base64,@Game.Image" alt="@Game.Name" class="game-image" />
+            }
+            else
+            {
+                <img style="max-width: min(400px,100%); height: auto" src="@Game.Image" alt="@Game.Name" class="game-image" />
+
+            }
         </a>
     </div>
     <hr class="hrfixed" />
     <div class="game-card-footer">
         <div class="btn-group my-3 text-center" role="group">
             <a href="#" class="btn btn-outline-info">
-                @if (IsBase64(Game!.Image))
-                {
-                    <img src="data:image/jpeg;base64,@Game.Image" class=game-image"" />
-                }
-                else
-                {
-                    <img src="/MainModule/icons/pen-to-square-solid.svg" style="width:20px;height:auto" />
-                }
+                <img src="/MainModule/icons/pen-to-square-solid.svg" style="width:20px;height:auto" />
             </a>
+
             <button type="button" class="btn btn-outline-danger">
                 <img src="/MainModule/icons/trash-can-solid.svg" style="width:20px;height:auto" />Delete
             </button>
@@ -37,7 +40,7 @@
 
     protected override void OnInitialized()
     {
-        url = $"gamesdetails/{Game!.Id}/{Uri.EscapeDataString(Game.Name)}";
+        url = $"gamesdetails/{Game!.Id}/{Uri.EscapeDataString(Game.Name!)}";
     }
     bool IsBase64(string value)
     {

@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\GameCatalog_V2.ComponentModule\GameCatalog_V2.ComponentModule.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.Core\GameCatalog_V2.Core.csproj" />
-    <ProjectReference Include="..\GameCatalog_V2.DeveloperModule\GameCatalog_V2.DeveloperModule.csproj" />
   </ItemGroup>
   
   <Target Name="CopyDLLs" AfterTargets="Build">

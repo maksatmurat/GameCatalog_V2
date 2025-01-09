@@ -1,6 +1,7 @@
 ﻿using Calabonga.Blazor.AppDefinitions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.FileProviders;
+using Tewr.Blazor.FileReader;
 
 namespace GameCatalog_V2.ComponentModule.Definitions;
 
@@ -10,6 +11,8 @@ public class ComponentModuleDefinitions : AppDefinition
 
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
+        builder.Services.AddFileReaderService(options => options.InitializeOnFirstCall = true);
+
     }
     public override void ConfigureApplication(WebApplication app)
     {
