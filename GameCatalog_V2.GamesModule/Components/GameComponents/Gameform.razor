@@ -35,7 +35,10 @@
     <div class="form-group form-markdown">
         <MarkdownInput @bind-Value="Game.Description" Label="Description" OnFor="(()=>Game.Description)" />
     </div>
-    
+    <div class="form-group">
+        <label>Game Genres:</label>
+        <MultipleSelector OnSelected="Selected" OnNotSelected="NotSelected" />
+    </div>
     <button class="btn btn-primary" type="submit">Save Changes</button>
 </EditForm>
 
@@ -43,10 +46,19 @@
     [Parameter] public GameModel? Game { get; set; }
     [Parameter] public EventCallback OnValidSubmit { get; set; }
 
+    [Parameter] public List<Genre>? SelectedGenres { get; set; } = new();
+    [Parameter] public List<Genre>? NotSelectedGenres { get; set; } = new();
+
+    [Parameter] public List<MultipleSelecterHelperModel>? Selected { get; set; } = new();
+    [Parameter] public List<MultipleSelecterHelperModel>? NotSelected { get; set; } = new();
+
     string? imageUrl;
 
     protected override void OnInitialized()
     {
+        Selected = SelectedGenres?.Select(x => new MultipleSelecterHelperModel(x.Id.ToString(), x.Name!)).ToList();
+        NotSelected = NotSelectedGenres?.Select(x => new MultipleSelecterHelperModel(x.Id.ToString(), x.Name!)).ToList();
+
         if (Game!.ReleaseDate is null)
             Game.ReleaseDate = DateTime.Now;
         if (!string.IsNullOrWhiteSpace(Game.Image))
@@ -62,3 +74,4 @@
         imageUrl = null;
     }
 }
+

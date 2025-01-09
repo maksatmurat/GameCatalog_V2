@@ -13,7 +13,6 @@ public class GameModel
     public string? Description { get; set; }
     public bool InSale { get; set; }
     public string? GamePlayVideo { get; set; }
-    public int GenreId { get; set; }
     [Required]
     public DateTime? ReleaseDate { get; set; }
     public string? Image { get; set; }
@@ -28,4 +27,5 @@ public class GameModel
             else return Name;
         }
     }
+    public List<GamesGenres>? GamesGenres { get; set; } = new();
 }

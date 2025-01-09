@@ -12,11 +12,17 @@
 </div>
 <div class="row">
     <div class="col">
-        <Gameform Game="game" OnValidSubmit="AddNewGame" />
+        <Gameform Game="game" NotSelectedGenres="notSelectedGenres" OnValidSubmit="AddNewGame" />
     </div>
 </div>
 @code{
     GameModel game = new();
+    List<Genre> notSelectedGenres = new();
+
+    protected override void OnInitialized()
+    {
+        notSelectedGenres = _db.GetAllGenres();
+    }
     void AddNewGame()
     {
         bool result = _db.CreateNewGame(game);

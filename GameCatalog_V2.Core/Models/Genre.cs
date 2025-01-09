@@ -8,4 +8,5 @@ public class Genre
     [Required]
     [MaxLength(50)]
     public string? Name { get; set; }
+    public List<GamesGenres>? GamesGenres { get; set; }=new();
 }

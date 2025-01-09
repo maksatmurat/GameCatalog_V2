@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCatalog_V2.GameSearchMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCatalog_V2.DeveloperModule", "GameCatalog_V2.DeveloperModule\GameCatalog_V2.DeveloperModule.csproj", "{D5E2FDC5-449D-44E4-B2FE-1CA13D56D250}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameCatalog_V2.ComponentModule", "GameCatalog_V2.ComponentModule\GameCatalog_V2.ComponentModule.csproj", "{FC61BB78-B578-42E0-B3FF-B903F1C6469D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D5E2FDC5-449D-44E4-B2FE-1CA13D56D250}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5E2FDC5-449D-44E4-B2FE-1CA13D56D250}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E2FDC5-449D-44E4-B2FE-1CA13D56D250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC61BB78-B578-42E0-B3FF-B903F1C6469D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC61BB78-B578-42E0-B3FF-B903F1C6469D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC61BB78-B578-42E0-B3FF-B903F1C6469D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC61BB78-B578-42E0-B3FF-B903F1C6469D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
