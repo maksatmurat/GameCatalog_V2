@@ -1,4 +1,5 @@
 ﻿using Calabonga.Blazor.AppDefinitions;
+using GameCatalog_V2.DataAccess.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -14,6 +15,8 @@ public class DeveloperModuleDefinitions : AppDefinition
     {
         builder.Services.AddScoped<IBlazorModule, DeveloperBlazorModule>();
         builder.Services.AddFileReaderService(options=>options.InitializeOnFirstCall=true);
+        builder.Services.AddScoped<IRepository, SqliteGameRepository>();
+
     }
     public override void ConfigureApplication(WebApplication app)
     {

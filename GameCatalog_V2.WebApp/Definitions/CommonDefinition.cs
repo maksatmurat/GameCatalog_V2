@@ -1,14 +1,20 @@
 ﻿using Calabonga.Blazor.AppDefinitions;
+using DataAccess;
+using GameCatalog_V2.DataAccess.Repository;
 using GameCatalog_V2.WebApp.Components;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameCatalog_V2.WebApp.Definitions;
 
-public class CommonDefinition: AppDefinition
+public class CommonDefinition : AppDefinition
 {
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
         builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+        builder.Services.AddScoped<IRepository, SqliteGameRepository>();
+        builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlite("Data Source=C:\\Users\\Maksat\\source\\repos\\GameCatalog_V2\\GameCatalog_V2.DataAccess\\Database\\GameIndustryBase.db"));
 
     }
     public override void ConfigureApplication(WebApplication app)

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GameCatalog_V2.Core.Models;
+namespace GameCatalog_V2.DataAccess.Models;
 
 public class Genre
 {
@@ -8,5 +8,5 @@ public class Genre
     [Required]
     [MaxLength(50)]
     public string? Name { get; set; }
-    public List<GamesGenres>? GamesGenres { get; set; }=new();
+    public IEnumerable<GameModel>? Games { get; set; }
 }

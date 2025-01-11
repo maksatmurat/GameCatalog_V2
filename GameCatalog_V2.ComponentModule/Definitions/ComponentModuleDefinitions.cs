@@ -1,5 +1,7 @@
 ﻿using Calabonga.Blazor.AppDefinitions;
+using GameCatalog_V2.DataAccess.Repository;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Tewr.Blazor.FileReader;
 
@@ -11,8 +13,8 @@ public class ComponentModuleDefinitions : AppDefinition
 
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
-        builder.Services.AddFileReaderService(options => options.InitializeOnFirstCall = true);
-
+        builder.Services.AddScoped<IRepository, SqliteGameRepository>();
+        builder.Services.AddFileReaderService(options => options.InitializeOnFirstCall = true);    
     }
     public override void ConfigureApplication(WebApplication app)
     {

@@ -3,34 +3,52 @@
 @rendermode InteractiveServer
 @inject IRepository repository
 
+
+
 <link href="MainModule/css/MySuper.css" rel="stylesheet" />
 
-<div class="row">
-    <div class="col">
-        <h1 class="text-info text-center text-uppercase">
-            Create Game
-        </h1>
-    </div>
-</div>
+<PageTitle>Home</PageTitle>
+
+
 <div class="row">
     <div class="col text-center">
         <button @onclick="AddNewGame" class="btn btn-primary"> Add New Game</button>
     </div>
 </div>
+@*<Typeahead OnPlaceHolder="Type Some here..." OnSearchHandler="SearchHandler">
+    <ResultTemplate>
+        @context
+    </ResultTemplate>
+</Typeahead>*@
 
-<PageTitle>Home</PageTitle>
 <GameList ListOfItems="gameItemsList" />
 
 @code{
     List<GameModel>? gameItemsList;
-
     protected override async Task OnInitializedAsync()
     {
-        gameItemsList =  repository.GetAllGames();
+        gameItemsList = repository.GetAllGames();
 
     }
     void AddNewGame()
     {
         navManager.NavigateTo("/games/create");
+    }
+
+    async Task<IEnumerable<string>> SearchHandler(string searchText)
+    {
+        await Task.Delay(2000);
+        if (searchText.Equals("TEst"))
+        {
+            return Enumerable.Empty<string>();
+        }
+        else
+        {
+            return new List<string>()
+            {
+                "CD Project Red",
+                "Rockstar Games"
+            };
+        }
     }
 }

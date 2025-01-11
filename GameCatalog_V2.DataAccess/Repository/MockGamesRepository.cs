@@ -1,6 +1,6 @@
-﻿using GameCatalog_V2.Core.Models;
+﻿using GameCatalog_V2.DataAccess.Models;
 
-namespace GameCatalog_V2.Core.Repository;
+namespace GameCatalog_V2.DataAccess.Repository;
 
 public class MockGamesRepository : IRepository
 {
@@ -49,7 +49,7 @@ public class MockGamesRepository : IRepository
                     ReleaseDate = new DateTime(2018, 11, 19),
                     Image = "https://cdn.verk.net/images/89/2_644443-766x1080.jpg",
                     InSale = true,
-                    GamesGenres=GetRandomGenres(1)
+                    //GamesGenres=GetRandomGenres(1)
                 },
 
                 new GameModel()
@@ -60,7 +60,7 @@ public class MockGamesRepository : IRepository
                     ReleaseDate = new DateTime(2015, 05, 18),
                     Image = "https://cdn.verk.net/960/images/52/2_560554-2460x4000.jpg",
                     InSale = true,
-                    GamesGenres=GetRandomGenres(2)
+                    //GamesGenres=GetRandomGenres(2)
 
                 },
 
@@ -72,7 +72,7 @@ public class MockGamesRepository : IRepository
                     ReleaseDate = new DateTime(2020, 07, 28),
                     Image = "https://images-na.ssl-images-amazon.com/images/I/81akufL4dtL._AC_SY606_.jpg",
                     InSale = true,
-                    GamesGenres=GetRandomGenres(3)
+                    //GenreId=GetRandomGenres(3)
 
                 },
                 new GameModel()
@@ -83,7 +83,7 @@ public class MockGamesRepository : IRepository
                     Image = "https://cdn2.unrealengine.com/egs-farmingsimulator22preorderbundle-giantssoftware-s3-2560x1440-fe0f2c2e5147.jpg",
                     ReleaseDate = new DateTime(2021, 11, 20),
                     InSale = false,
-                    GamesGenres=GetRandomGenres(4)
+                    //GamesGenres=GetRandomGenres(4)
 
                 }
             };

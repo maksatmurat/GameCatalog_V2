@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Calabonga.Blazor.AppDefinitions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -15,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameCatalog_V2.Core\GameCatalog_V2.Core.csproj" />
+    <ProjectReference Include="..\GameCatalog_V2.DataAccess\GameCatalog_V2.DataAccess.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.DeveloperModule\GameCatalog_V2.DeveloperModule.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.GameSearchModule\GameCatalog_V2.GameSearchModule.csproj" />
     <ProjectReference Include="..\GameCatalog_V2.GamesModule\GameCatalog_V2.GamesModule.csproj" />

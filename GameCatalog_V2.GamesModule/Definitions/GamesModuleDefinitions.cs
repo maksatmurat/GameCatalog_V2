@@ -1,5 +1,5 @@
 ﻿using Calabonga.Blazor.AppDefinitions;
-using GameCatalog_V2.Core.Repository;
+using GameCatalog_V2.DataAccess.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -13,7 +13,7 @@ public class GamesModuleDefinitions : AppDefinition
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<IBlazorModule, GamesBlazorModule>();
-        builder.Services.AddScoped<IRepository,MockGamesRepository>();
+        builder.Services.AddScoped<IRepository, SqliteGameRepository>();
     }
     public override void ConfigureApplication(WebApplication app)
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace GameCatalog_V2.Core.Helpers;
+namespace GameCatalog_V2.DataAccess.Helpers;
 
 public struct MultipleSelecterHelperModel
 {

@@ -1,7 +1,7 @@
 ﻿
-using GameCatalog_V2.Core.Models;
+using GameCatalog_V2.DataAccess.Models;
 
-namespace GameCatalog_V2.Core.Repository;
+namespace GameCatalog_V2.DataAccess.Repository;
 
 public interface IRepository
 {
@@ -11,5 +11,5 @@ public interface IRepository
     List<Genre> GetAllGenres();
     Genre? GetGenreById(int id);
     bool EditGenre(Genre editedgenre);
-
+    List<GameDeveloper> GetAllDevelopers();
 }

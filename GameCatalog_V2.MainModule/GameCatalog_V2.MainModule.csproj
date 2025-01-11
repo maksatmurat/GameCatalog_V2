@@ -21,6 +21,11 @@
     <Folder Include="Components\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GameCatalog_V2.ComponentModule\GameCatalog_V2.ComponentModule.csproj" />
+    <ProjectReference Include="..\GameCatalog_V2.DataAccess\GameCatalog_V2.DataAccess.csproj" />
+  </ItemGroup>
+
   <Target Name="CopyDLLs" AfterTargets="Build">
     <Message Text="Executing Copy Command Task" Importance="High" />
 

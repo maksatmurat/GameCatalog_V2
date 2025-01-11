@@ -1,5 +1,6 @@
 ﻿
 using Calabonga.Blazor.AppDefinitions;
+using GameCatalog_V2.DataAccess.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -13,6 +14,8 @@ public class GameSearchModuleDefinitions : AppDefinition
     public override void ConfigureServices(WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<IBlazorModule, GameSearchBlazorModule>();
+        builder.Services.AddScoped<IRepository, SqliteGameRepository>();
+
     }
     public override void ConfigureApplication(WebApplication app)
     {

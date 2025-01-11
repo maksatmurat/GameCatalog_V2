@@ -1,4 +1,5 @@
 @rendermode InteractiveServer
+@inject IRepository _db
 
 <EditForm Model="Game" FormName="games" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
@@ -39,12 +40,26 @@
         <label>Game Genres:</label>
         <MultipleSelector OnSelected="Selected" OnNotSelected="NotSelected" />
     </div>
+    <div class="form-group">
+        <label>Developer:</label>
+        @*<MultipleSelectorTypeahead Context="GameDeveloper" OnSearch="SearchHandler" OnSelectedElements="SelectedDevelopers">
+            <ResultTemplate>
+                <img style="width:50px;" src="@GameDeveloper.Image" />
+                @GameDeveloper.DeveloperName
+            </ResultTemplate>
+            <ListTemplate>
+                @GameDeveloper.DeveloperName
+            </ListTemplate>
+        </MultipleSelectorTypeahead>*@
+    </div>
+
     <button class="btn btn-primary" type="submit">Save Changes</button>
 </EditForm>
 
 @code{
     [Parameter] public GameModel? Game { get; set; }
     [Parameter] public EventCallback OnValidSubmit { get; set; }
+    [Parameter] public List<GameDeveloper>? SelectedDevelopers { get; set; } = new();
 
     [Parameter] public List<Genre>? SelectedGenres { get; set; } = new();
     [Parameter] public List<Genre>? NotSelectedGenres { get; set; } = new();
@@ -72,6 +87,11 @@
     {
         Game!.Image = imageBase64;
         imageUrl = null;
+    }
+
+    async Task<IEnumerable<GameDeveloper>> SearchHandler(string searchText)
+    {
+            return  _db.GetAllDevelopers();
     }
 }
 

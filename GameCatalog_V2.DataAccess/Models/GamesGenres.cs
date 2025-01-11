@@ -1,6 +1,6 @@
 ﻿
 
-namespace GameCatalog_V2.Core.Models;
+namespace GameCatalog_V2.DataAccess.Models;
 
 public class GamesGenres
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GameCatalog_V2.Core.Models;
+namespace GameCatalog_V2.DataAccess.Models;
 
 public class GameDeveloper
 {
@@ -9,4 +9,6 @@ public class GameDeveloper
     public string? DeveloperName { get; set; }
     public string? StudioDescription { get; set; }
     public string? Image { get; set; }
+    public IEnumerable<GameModel>? GameModels { get; set; }
+
 }

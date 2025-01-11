@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GameCatalog_V2.Core.Models;
+namespace GameCatalog_V2.DataAccess.Models;
 
 public class GameModel
 {
@@ -27,5 +28,8 @@ public class GameModel
             else return Name;
         }
     }
-    public List<GamesGenres>? GamesGenres { get; set; } = new();
+    public int? DeveloperId { get; set; }
+    [ForeignKey(nameof(DeveloperId))]
+    public GameDeveloper? Developer { get; set; }
+    public IEnumerable<Genre>? Genres { get; set; }
 }
